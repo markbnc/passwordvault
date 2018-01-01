@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.geometry.Insets?>
+
+<DialogPane 
+	fx:id="dialogPane"
+	stylesheets="@PasswordVault.css" 
+	fx:controller="com.ecdsinc.passwordvault.CreateVaultDialogController" 
+    xmlns:fx="http://javafx.com/fxml">
+   <content>
+      <GridPane alignment="center" hgap="10" vgap="10" styleClass="root">
+        <padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
+        <children>
+            <Label text="Vault Name" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField fx:id="vaultNameCtrl" GridPane.columnIndex="1" GridPane.rowIndex="0" 
+            	prefWidth="300"/>
+            <Label text="Vault Password" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <PasswordField fx:id="vaultPasswordCtrl" GridPane.columnIndex="1" GridPane.rowIndex="1" 
+            	prefWidth="300"/>
+            <Label text="Confirm Vault Password" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <PasswordField fx:id="confirmVaultPasswordCtrl" GridPane.columnIndex="1" GridPane.rowIndex="2" 
+            	prefWidth="300"/>
+            <Label text="Description" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <TextField fx:id="descriptionCtrl" GridPane.columnIndex="1" GridPane.rowIndex="3" 
+            	prefWidth="300"/>
+            <Label text="Password Hint" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <TextField fx:id="passwordHintCtrl" GridPane.columnIndex="1" GridPane.rowIndex="4" 
+            	prefWidth="300"/>
+        </children>
+      </GridPane>
+   </content>
+   <buttonTypes>
+      <ButtonType fx:constant="OK" />
+      <ButtonType fx:constant="CANCEL" />
+   </buttonTypes>
+</DialogPane>

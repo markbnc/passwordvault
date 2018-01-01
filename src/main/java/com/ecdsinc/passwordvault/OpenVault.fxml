@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<GridPane fx:controller="com.ecdsinc.passwordvault.OpenVaultController" 
+    xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10"
+    styleClass="root">
+    <padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
+    
+    <Text fx:id="welcomeText" text="Open Vault" 
+         GridPane.columnIndex="0" GridPane.rowIndex="0"
+        GridPane.columnSpan="2"/>
+ 
+    <Label text="Vault:"
+        GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+ 
+ 	<ChoiceBox fx:id="vaultListCtrl" 
+ 		GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+ 
+    <Label text="Password:"
+        GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+ 
+    <PasswordField fx:id="passwordField" 
+        GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        
+    <Label text="Password Hint:"
+         GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+         
+    <TextField fx:id="passwordHintField"
+        GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+       
+    <HBox spacing="10" alignment="bottom_right" fx:id="buttonPane" 
+        GridPane.columnIndex="1" GridPane.rowIndex="4">
+        <Button fx:id="openVaultButton" text="Open Vault"
+        		onAction="#handleSubmitButtonAction"/>
+    </HBox>
+
+    <stylesheets>
+      <URL value="@PasswordVault.css" />
+    </stylesheets>
+
+</GridPane>

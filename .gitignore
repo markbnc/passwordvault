@@ -1,0 +1,4 @@
+#Untracked files
+target/**
+*.class
+*.bak

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<DialogPane stylesheets="@PasswordVault.css" 
+			fx:controller="com.ecdsinc.passwordvault.NewEntryDialogController" 
+    		xmlns:fx="http://javafx.com/fxml">
+    <content>
+		<GridPane alignment="center" hgap="10" vgap="10" styleClass="root">
+   			
+			<padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
+    
+    		<Label text="Location:"
+        		GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+ 
+			<TextField fx:id="locationCtrl"
+ 				GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+ 
+    		<Label text="User Name:"
+        		GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+ 
+ 			<TextField fx:id="userNameCtrl"
+ 				GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+ 
+    		<Label text="Password:"
+        		GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+ 
+    		<PasswordField fx:id="passwordCtrl" 
+        		GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        
+ 			<TextField fx:id="clearTextPasswordCtrl"
+ 				GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+ 
+    		<Label text="Description:"
+        		GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+         
+    		<TextField fx:id="descriptionCtrl"
+        		GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+     
+			<CheckBox fx:id="hidePasswordCtrl"
+        		GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.rowSpan="2"
+				onAction="#handleHidePasswordCtrl"
+				text="Mask Password"
+				selected="true" />
+<!--
+    <HBox spacing="10" alignment="bottom_right" fx:id="buttonPane" 
+        GridPane.columnIndex="1" GridPane.rowIndex="5">
+        <ButtonType fx:constant="OK"/> 
+        <ButtonType fx:constant="CANCEL"/>
+    </HBox>
+-->
+    		<stylesheets>
+      			<URL value="@PasswordVault.css" />
+    		</stylesheets>
+		</GridPane>
+	</content>
+	<buttonTypes>
+		<ButtonType fx:constant="OK"/> 
+		<ButtonType fx:constant="CANCEL"/>
+	</buttonTypes>
+</DialogPane>
+
+
