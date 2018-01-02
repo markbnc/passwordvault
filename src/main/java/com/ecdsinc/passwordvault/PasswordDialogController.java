@@ -1,11 +1,16 @@
 package com.ecdsinc.passwordvault;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.util.Callback;
 
 /**
@@ -31,12 +36,17 @@ public class PasswordDialogController implements PvDialogController<String> {
 	
 	private static final int	INITIAL_VALUE_CURRENT_PASSWORD_INDEX = 0;
 	
+	private static final String		CHARACTER_CTRL_C = "\u0003";
+	
     @FXML
     public void initialize() 
     	throws PasswordVaultException {
     	
      	clearTextPasswordCtrl.setVisible(false);
-    	
+     	
+     	//	set the initial focus on the password field
+		Platform.runLater(() -> passwordCtrl.requestFocus());
+   	
     	responseConverter = new Callback<ButtonType, String>() {
 
 			@Override
@@ -76,6 +86,18 @@ public class PasswordDialogController implements PvDialogController<String> {
     		clearTextPasswordCtrl.setText(passwordCtrl.getText());
     		passwordCtrl.setVisible(false);
     		clearTextPasswordCtrl.setVisible(true);    		
+    	}
+    }
+    
+    @FXML
+    protected void handlePasswordCtrlKeyTyped(KeyEvent event) {
+    	
+    	if (CHARACTER_CTRL_C.equals(event.getCharacter())) {
+    		
+    		Clipboard	clipboard = Clipboard.getSystemClipboard();
+    		ClipboardContent	content = new ClipboardContent();
+    		content.putString(passwordCtrl.getText());
+    		clipboard.setContent(content);
     	}
     }
     

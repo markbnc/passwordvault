@@ -468,6 +468,7 @@ public class Actions {
 				
 				vaultView.setLastActivity();
 				app.setVisiblePane(PasswordVault.VAULT_CONTENTS_PANE_INDEX);
+				app.updateControls();
 			}
 		}
 		catch (PasswordVaultException except) {
