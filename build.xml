@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<!--
+/*****************************************************************************
+ *
+ *	File: build.xml
+ *
+ *	Description:
+ *	  This is the Ant build script which is used to build the install package
+ *	  for the Password Vault application
+ *
+ *****************************************************************************/
+-->
+
+<project name="PasswordVault" default="build-install-package" basedir=".">
+
+	<!-- Include Environment variables -->
+	<property environment="env" />
+
+	<!-- Init properties -->
+	<property name="vendor" value="mbiamonte"/>
+	<property name="program.name" value="PasswordValut"/>
+	<property name="version" value="2.0.1"/>
+	<property name="target.dir" value="${basedir}/target"/>
+	<property name="install.package.dir" value="${basedir}/../passwordvault_install/${version}"/>
+	<property name="install.package.build.dir" value="${install.package.dir}/build"/>
+
+	<!--
+	/******************************************************************************
+	 * Targets
+	 ******************************************************************************
+	-->
+
+	<!-- Build the Install Package
+		 NOTE: mvn package must be run prior to this
+		 TODO: run mvn package from within this ant script
+	-->
+	<target name="build-install-package">
+		<copy todir="${install.package.build.dir}">
+			<fileset dir="${target.dir}">
+				<include name="passwordvault-${version}.jar"/>
+				<include name="lib/**"/>
+			</fileset>
+		</copy>
+        <zip destfile="${install.package.dir}/passwordvault-${version}.zip">
+			<fileset dir="${install.package.build.dir}"/>
+        </zip>
+		<tar destfile="${install.package.dir}/passwordvault-${version}.tar.gz">
+			<fileset dir="${install.package.build.dir}"/>
+		</tar>
+	</target>
+</project>
