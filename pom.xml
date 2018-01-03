@@ -30,8 +30,16 @@
     	<version>2.7.1</version>
 	</dependency>  
   </dependencies>
+  <properties>
+  	<app.author>mbiamonte</app.author>
+  	<app.name>PasswordVault</app.name>
+  	<app.version>2.0.1</app.version>
+  	<build.target.dir>${project.basedir}/target</build.target.dir>
+  	<install.package.dir>${project.basedir}/../passwordvault_install/${app.version}</install.package.dir>
+	<install.package.build.dir>${install.package.dir}/build</install.package.build.dir>
+  </properties>
   <build>
-   <plugins>
+    <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -57,9 +65,9 @@
                 </outputDirectory>
             </configuration>
           </execution>
-      </executions>
-	</plugin>
-	<plugin>
+        </executions>
+	  </plugin>
+	  <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <version>3.0.2</version>
@@ -74,6 +82,34 @@
           </archive>
         </configuration>
       </plugin>
+	  <plugin>
+	    <artifactId>maven-antrun-plugin</artifactId>
+	    <version>1.8</version>
+	    <executions>
+	      <execution>
+	        <phase>package</phase>
+	        <configuration>
+	          <target name="build-install-package">
+	            <copy todir="${install.package.build.dir}">
+			      <fileset dir="${build.target.dir}">
+				    <include name="passwordvault-${app.version}.jar"/>
+				    <include name="lib/**"/>
+			      </fileset>
+		        </copy>
+                <zip destfile="${install.package.dir}/passwordvault-${app.version}.zip">
+			      <fileset dir="${install.package.build.dir}"/>
+                </zip>
+		        <tar destfile="${install.package.dir}/passwordvault-${app.version}.tar.gz">
+			      <fileset dir="${install.package.build.dir}"/>
+		        </tar>
+	          </target>
+	        </configuration>
+	        <goals>
+	          <goal>run</goal>
+	        </goals>
+	      </execution>
+	    </executions>
+	  </plugin>
     </plugins>
   </build>
 </project>
