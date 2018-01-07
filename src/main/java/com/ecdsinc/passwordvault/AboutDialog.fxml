@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.geometry.Insets?>
+
+<DialogPane 
+	fx:id="dialogPane"
+	stylesheets="@PasswordVault.css" 
+	fx:controller="com.ecdsinc.passwordvault.AboutDialogController" 
+    xmlns:fx="http://javafx.com/fxml">
+   <content>
+	    <GridPane alignment="center" hgap="10" vgap="10" styleClass="root">
+	      <padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
+	      <children>
+			<Label text="PasswordVault" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" visible="true"/>
+			<Label text="Version:" GridPane.columnIndex="0" GridPane.rowIndex="1" visible="true"/>
+			<Label fx:id="versionCtrl" text="unknown" GridPane.columnIndex="1" GridPane.rowIndex="1" visible="true"/>
+			<Label text="Project URL:" GridPane.columnIndex="0" GridPane.rowIndex="2" visible="true"/>
+			<Label fx:id="urlCtrl" text="unknown" GridPane.columnIndex="1" GridPane.rowIndex="2" visible="true"/>
+			<TextArea fx:id="licenseCtrl" text="unknown" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2" visible="true" wrapText="true"/>
+	      </children>
+	    </GridPane>
+   </content>
+   <buttonTypes>
+      <ButtonType fx:constant="OK" />
+   </buttonTypes>
+</DialogPane>

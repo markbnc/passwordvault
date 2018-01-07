@@ -34,7 +34,8 @@ public class Actions {
 	private static final String			FXML_CREATE_VAULT_DIALOG		= "CreateVaultDialog.fxml";
 	private static final String			FXML_FIND_DIALOG				= "FindDialog.fxml";
 	private static final String			FXML_OPTIONS_DIALOG				= "OptionsDialog.fxml";
-	
+	private static final String			FXML_ABOUT_DIALOG				= "AboutDialog.fxml";
+		
 	public static void doOpenVault(ActionEvent event) {
 		
 		//	TODO: 	Open the vault in a separate thread to allow the wait cursor to be shown.  If the vault is opened in the event
@@ -453,7 +454,9 @@ public class Actions {
 	
 	public static void doAbout(ActionEvent event) {
 		
-		JOptionPane.showMessageDialog(null, "Help About Item clicked");
+		
+		PvDialog<Void> aboutDialog = new PvDialog<>(FXML_ABOUT_DIALOG, "About Password Vault");
+		aboutDialog.showAndWait();
 	}
 	
 	public static void doUnlockVault(ActionEvent event, String password) {
