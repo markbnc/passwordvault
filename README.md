@@ -15,3 +15,12 @@ unlimited strength encryption, AES-256 encryption may be used to encrypt the vau
 ## Prerequisites
 
 Password Vault is a Java application and requires Java 8 or higher to run.  
+
+## Installation
+
+Download the appropriate package for the latest release at
+
+https://github.com/markbnc/passwordvault/releases/latest
+
+1. On Windows Unzip the package zip file into a directory
+1. Change to the directory and double click the passwordvault-2.0.1.jar file
