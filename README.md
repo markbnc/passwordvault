@@ -22,5 +22,9 @@ Download the appropriate package for the latest release at
 
 https://github.com/markbnc/passwordvault/releases/latest
 
-1. On Windows Unzip the package zip file into a directory
+1. On Windows Unzip the package zip file into a directory and on Linux or Mac untar the package compressed tar file.
 1. Change to the directory and double click the passwordvault-2.0.1.jar file
+1. The application will open up to the OpenVault Screen.  
+   1. The first time the application is open there will not be any vaults in the Vault list
+   1. Create a new vault by selecting File > Create New Vault
+   1. Enter the information in the Create New Vault dialog.  Remember the password.  If you forget the password, the contents of the vault will not be accessible.  You can specify a hint to help remember the password.  The hint shows in clear text so it should not be the actual password.
