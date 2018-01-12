@@ -26,5 +26,18 @@ https://github.com/markbnc/passwordvault/releases/latest
 1. Change to the directory and double click the passwordvault-2.0.1.jar file
 1. The application will open up to the OpenVault Screen.  
    1. The first time the application is open there will not be any vaults in the Vault list
-   1. Create a new vault by selecting File > Create New Vault
-   1. Enter the information in the Create New Vault dialog.  Remember the password.  If you forget the password, the contents of the vault will not be accessible.  You can specify a hint to help remember the password.  The hint shows in clear text so it should not be the actual password.
+      1. Create a new vault by selecting File > Create New Vault
+      1. Enter the information in the Create New Vault dialog.  Remember the password.  If you forget the password, the contents of the vault will not be accessible.  You can specify a hint to help remember the password.  The hint shows in clear text so it should not be the actual password.
+   1. After the first time, the created vault(s) will be shown in the Vault drop down list.  Select the desired vault and enter the password for that vault.
+   
+## Backing up Vaults
+
+The Vault data and the keystore containing the vault encryption keys are stored in the Vault Directory.  The location of the Vault Direcory can be seen and modified using the Password Vault Options dialog.  The Options dialog can be displayed by selecting Edit > Options.  The Vault Directory path can be either an absolute or relative path.  If the path is relative it will be relative to the
+
+%appdata%\PasswordVault   on Windows
+
+and 
+
+~/.password_vault         on Linux and Mac
+
+To back up your vault data, make a copy of all of the files in the Vault Directory.
