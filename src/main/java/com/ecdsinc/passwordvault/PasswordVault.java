@@ -31,6 +31,7 @@ public class PasswordVault extends Application {
 	private Node					lockedVaultPane;
 	private LockScreenController	lockedVaultController;
 	private FindOperation			findOperation;
+	private PvDialog<?>				currentDialog;
 	
 	private Clock					clockThread;
 	private ActivityMonitor			activityMonitorThread;
@@ -308,4 +309,19 @@ public class PasswordVault extends Application {
 			VaultUtil.displayErrorDialog("Error unlocking vault", except);
 		}
 	}
+	
+	public Stage getStage() {
+		
+		return primaryStage;
+	}
+
+	public PvDialog<?> getCurrentDialog() {
+		return currentDialog;
+	}
+
+	public void setCurrentDialog(PvDialog<?> currentDialog) {
+		this.currentDialog = currentDialog;
+	}
+	
+	
 }

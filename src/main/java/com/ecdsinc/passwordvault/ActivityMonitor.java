@@ -3,6 +3,8 @@ package com.ecdsinc.passwordvault;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javafx.application.Platform;
+
 public class ActivityMonitor extends Thread {
 
 	private VaultView	vaultView;
@@ -48,6 +50,18 @@ public class ActivityMonitor extends Thread {
 					
 				if ((currentTime - lastActivityTime) > lockTimeout) {
 					
+					PasswordVault	app = env.getApplication();
+					
+					//	if there is a dialog currently being shown, then close it
+					PvDialog<?> currentDialog = app.getCurrentDialog();
+					if (currentDialog != null) {
+						
+						//	Close needs to be called from the Event thread
+						Platform.runLater(() -> {
+							
+							currentDialog.close();
+						});
+					}
 					env.getApplication().lock();
 				}
 				

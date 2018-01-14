@@ -1,6 +1,5 @@
 package com.ecdsinc.passwordvault;
 
-import java.io.IOException;
 import java.net.URL;
 
 import javafx.fxml.FXMLLoader;
@@ -26,9 +25,36 @@ public class PvDialog<R> extends Dialog<R> {
             setResultConverter(controller.getResponseConverter());
             setTitle(title);
             setIcon(ICON_PATH);
+            initOwner(Environment.getEnvironment().getApplication().getStage());
+            
+           setOnShowing((event) -> {
+            	
+            	try {
+            		
+            		Environment.getEnvironment().getApplication().setCurrentDialog(this);
+            	}
+            	catch (Exception except) {
+            		
+            		//	Don't want to pop a dialog in a listener.
+            		//	If the environment can not be obtained there is something very wrong.
+            	}
+            });
+           
+           setOnHiding((event) -> {
+        	   
+        	   try {
+        		
+        		   Environment.getEnvironment().getApplication().setCurrentDialog(null);
+        	   }
+        	   catch (Exception except) {
+        		
+        		   //	Don't want to pop a dialog in a listener.
+        		   //	If the environment can not be obtained there is something very wrong.
+        	   }
+           });
 
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception except) {
+            VaultUtil.displayErrorDialog("Error initializing dialog " + title, except);
         }
 	}
 	
@@ -39,4 +65,6 @@ public class PvDialog<R> extends Dialog<R> {
 		Stage stage = (Stage) getDialogPane().getScene().getWindow();
 		stage.getIcons().add(icon);	
 	}
+	
+	
 }

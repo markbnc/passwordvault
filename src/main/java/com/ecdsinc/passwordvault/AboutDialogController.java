@@ -52,8 +52,11 @@ public class AboutDialogController implements PvDialogController<Void> {
     	
     	getManifestAttributes();
     	
-    	versionCtrl.setText(manifestAttributes.getValue(MANIFEST_ATTRIB_VERSION));
-    	urlCtrl.setText(manifestAttributes.getValue(MANIFEST_ATTRIB_PROJECT_URL));
+    	if (manifestAttributes != null) {
+    	
+    		versionCtrl.setText(manifestAttributes.getValue(MANIFEST_ATTRIB_VERSION));
+    		urlCtrl.setText(manifestAttributes.getValue(MANIFEST_ATTRIB_PROJECT_URL));
+    	}
     	licenseCtrl.setText(getNoticesText());
     	
     	responseConverter = new Callback<ButtonType, Void>() {
